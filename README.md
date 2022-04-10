@@ -1,10 +1,10 @@
-# gcli
+# templ-store
 
 A cli tool for developer to add and download template repository widthout git clone
 
 ## Installation
 ```bash
-npm install gcli -g
+npm install templ-store -g
 ```
 this will register a global command `chong`
 ## How to use
@@ -25,13 +25,13 @@ With command `add` you will asked to enter three params `name`,`url`, `desc`(opt
 
 url sample:
 ```bash
-https://github.com/gg3015/gcli.git
+https://github.com/gg3015/template-test.git
 ```
 ```bash
-https://github.com/gg3015/gcli.git#main
+https://github.com/gg3015/template-test.git#main
 ```
 ```bash
-gg3015/gcli
+gg3015/template-test
 ```
 
 ### Delete template
