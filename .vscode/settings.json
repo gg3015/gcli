@@ -1,0 +1,6 @@
+{
+  "tslint.jsEnable": false,
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "tslint.exclude": ["node_modules/**","commands/**"]
+}

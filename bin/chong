@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+const program = require("commander")
+
+const figlet = require('figlet')
+const { version } = require(`${__dirname}/../package`)
+
+console.log(figlet.textSync('Chong'))
+console.log((`repository: https://github.com/gg3015/gcli`))
+console.log('')
+console.log((`V${version} by gg3015`))
+console.log('')
+console.log('===========================================')
+console.log('')
+
+program.usage('<command>')
+
+program.version(version)
+
+program
+  .command('add')
+  .description('add a new template')
+  .action(() => {
+    require('../commands/add')
+  })
+
+program
+  .command('delete')
+  .description('delete a template')
+  .action(() => {
+    require('../commands/delete')
+  })
+program
+  .command('edit')
+  .description('edit a template')
+  .action(() => {
+    require('../commands/edit')
+  })
+
+program
+  .command('list')
+  .description('list template')
+  .action(() => {
+    require('../commands/list')
+  })
+program
+  .command('init')
+  .description('init a project, enter two params template-name and project-name, like chong init test firstProject')
+  .action(() => {
+    require('../commands/init')
+  })
+
+program.parse(process.argv)
