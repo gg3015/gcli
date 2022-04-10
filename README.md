@@ -1,10 +1,10 @@
-# gcli
+# gg-cli
 
 A cli tool for developer to add and download template repository widthout git clone
 
 ## Installation
 ```bash
-npm install gcli -g
+npm install gg-cli -g
 ```
 this will register a global command `chong`
 ## How to use

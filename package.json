@@ -1,5 +1,5 @@
 {
-  "name": "gcli",
+  "name": "gg-cli",
   "version": "1.0.0",
   "description": "a scaffolding for develop",
   "bin": {
