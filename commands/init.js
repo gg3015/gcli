@@ -6,8 +6,10 @@ const templateList = require(`${__dirname}/../template`)
 const symbols = require('log-symbols')
 const chalk = require('chalk')
 chalk.level = 1
-const fs = require('fs')
+// const fs = require('fs')
+const fs = require('fs-extra')
 const path = require('path')
+const execSync = require('child_process').execSync;
 program.usage('<template-name> [project-name]')
 program.parse(process.argv)
 // 当没有输入参数的时候给个提示
@@ -61,6 +63,13 @@ download(finnalUrl, `./${projectName}`, {clone:isHttp}, (err) => {
   // 结束加载图标
   spinner.succeed()
   console.log(chalk.green(symbols.success), chalk.green('Generation completed!'))
+  console.warn('Removing .git directory...');
+    try {
+      // unlinkSync() doesn't work on directories.
+      fs.removeSync(projectName, '.git'));
+    } catch (removeErr) {
+      // Ignore.
+    }
   console.log('\n To get started')
   console.log(`\n    cd ${projectName} \n`)
 })
