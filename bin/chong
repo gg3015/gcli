@@ -6,7 +6,7 @@ const figlet = require('figlet')
 const { version } = require(`${__dirname}/../package`)
 
 console.log(figlet.textSync('Chong'))
-console.log((`repository: https://github.com/gg3015/gcli`))
+console.log((`repository: https://github.com/gg3015/templ-store`))
 console.log('')
 console.log((`V${version} by gg3015`))
 console.log('')

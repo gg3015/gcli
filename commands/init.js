@@ -40,13 +40,16 @@ if (!projectName) {
 
 try {
   fs.accessSync(projectName)
-  console.log(chalk.yellow(symbols.warning), chalk.yellow(`folder ${projectName} has existed, will try create new folder`))
-  projectName=projectName+' copy'
+  console.log('\n')
+  const tempName = projectName+'_copy_'+ (Date.now()*Math.random()*100).toFixed(0).toString()
+  console.log(chalk.yellow(symbols.warning), chalk.yellow(`Folder ${projectName} has existed,we will try create a new folder: ${chalk.cyan(tempName)}`))
+  console.log(chalk.yellow(`  You can change the folder name after then.`))
+  projectName=tempName
 } catch (error) {
   // console.log(chalk.red(error))
 }
 
-console.log('targetUrl:', templateProjectUrl)
+console.log('\n targetUrl:', templateProjectUrl)
 console.log(chalk.green('\n Start generating... \n'))
 // 出现加载图标
 const spinner = ora('Downloading...')
@@ -54,23 +57,28 @@ const isHttp = /http/.test(templateProjectUrl)
 const finnalUrl = `${isHttp ? 'direct:' : ''}${templateProjectUrl}`
 spinner.start()
 
-download(finnalUrl, `./${projectName}`, {clone:isHttp}, (err) => {
+download(finnalUrl, `./${projectName}`, {clone:false}, (err) => {
   if (err) {
     spinner.fail()
     console.log(chalk.red(symbols.error), chalk.red(`Generation failed. ${err}`))
+    console.log(chalk.yellow(symbols.info), chalk.yellow(`If the target url is like https://***.git, try to add branch name after url, \n like ${chalk.cyan('.git#branch-name')} not just branch main, but other branch
+    \n or github is blocked, oops! try other way.`))
     return
   }
   // 结束加载图标
   spinner.succeed()
   console.log(chalk.green(symbols.success), chalk.green('Generation completed!'))
-  console.warn('Removing .git directory...');
-    try {
-      // unlinkSync() doesn't work on directories.
-      fs.removeSync(projectName, '.git'));
-    } catch (removeErr) {
-      // Ignore.
-    }
-  console.log('\n To get started')
-  console.log(`\n    cd ${projectName} \n`)
+  // console.log(chalk.yellow(symbols.warning), chalk.yellow('Removing .git directory...'));
+    // try {
+    //   // unlinkSync() doesn't work on directories.
+    //   fs.removeSync(path.join(process.cwd()+'/'+projectName, '.git'));
+    // } catch (removeErr) {
+    //   // Ignore.
+    // }
+  console.log('\n')
+  console.log(chalk.green('To get started'))
+  console.log(`\n   ${chalk.cyan('cd '+ projectName)} \n`)
+  console.log(`\n   enjoy coding\n`)
+
 })
 

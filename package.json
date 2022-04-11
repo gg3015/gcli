@@ -19,7 +19,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gg3015/gcli.git"
+    "url": "https://github.com/gg3015/templ-store.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -38,5 +38,8 @@
     "log-symbols": "4.1.0",
     "lolcatjs": "^2.4.1",
     "ora": "5.4.1"
+  },
+  "devDependencies": {
+    "fs-extra": "^10.0.1"
   }
 }
